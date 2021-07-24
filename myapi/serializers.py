@@ -16,6 +16,7 @@ class MedicationSerializer(serializers.HyperlinkedModelSerializer):
 	class Meta:
 		model = Medication
 		fields = ('id', 'name', 'user', 'user_id', 'ingredients')
+		depth = 1
 
 	user_id = serializers.SerializerMethodField('get_user_id')
 
