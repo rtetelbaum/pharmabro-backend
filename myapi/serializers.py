@@ -15,4 +15,9 @@ class IngredientSerializer(serializers.HyperlinkedModelSerializer):
 class MedicationSerializer(serializers.HyperlinkedModelSerializer):
 	class Meta:
 		model = Medication
-		fields = ('id', 'name', 'user', 'ingredients')
+		fields = ('id', 'name', 'user', 'user_id', 'ingredients')
+
+	user_id = serializers.SerializerMethodField('get_user_id')
+
+	def get_user_id(self, obj):
+		return obj.user.id
